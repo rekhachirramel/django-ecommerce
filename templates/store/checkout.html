@@ -1,0 +1,18 @@
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+
+  <script
+      src="https://checkout.razorpay.com/v1/checkout.js"
+      data-key="{{ razorpay_key }}"
+      data-amount="{{ razorpay_amount }}"
+      data-currency="INR"
+      data-order_id="{{ razorpay_order_id }}"
+      data-buttontext="Pay with Razorpay"
+      data-name="My Store"
+      data-description="Payment for your order"
+      data-theme.color="#F37254"
+  ></script>
+
+  <input type="hidden" custom="Hidden Element" name="hidden">
+</form>

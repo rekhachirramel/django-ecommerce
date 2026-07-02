@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Customer Login{% endblock %}
+
+{% block content %}
+  <h2 style="text-align:center;">Customer Login</h2>
+
+  {% if messages %}
+    <div style="text-align: center;">
+      {% for message in messages %}
+        <p style="color: red; font-weight: bold;">{{ message }}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <form method="post" style="max-width: 400px; margin: 20px auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px;">
+    {% csrf_token %}
+    <label>Username:</label><br>
+    <input type="text" name="username" required style="width: 100%; padding: 8px; margin-bottom: 10px;"><br>
+
+    <label>Password:</label><br>
+    <input type="password" name="password" required style="width: 100%; padding: 8px; margin-bottom: 20px;"><br>
+
+    <button type="submit" style="width: 100%; background-color: #0d6efd; color: white; padding: 10px; border: none; border-radius: 5px;">
+      Login
+    </button>
+  </form>
+{% endblock %}
