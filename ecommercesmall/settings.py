@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-2b-ulkmir@=9lmz-2^9u-5q#*evj3wr)#(9k4$&o@a@+d5=v6w"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -111,6 +112,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Media files (for product images)
 MEDIA_URL = '/media/'
@@ -126,3 +128,4 @@ LOGIN_URL = '/login/'
 
 RAZORPAY_KEY_ID = "rzp_test_73fFNe1fHnCy3d"
 RAZORPAY_KEY_SECRET = "V2U0zsZ8i45VO9QA1hUsPix9"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
